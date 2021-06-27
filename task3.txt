@@ -1,0 +1,166 @@
+Task 3
+1.to print odd number in a array
+solution:
+let arr = [1,2,3,4,5,6,7,8,9,10,11,12]
+
+let odds = arr.filter(n => n%2)
+{
+console.log(odds)
+}
+
+output:[ 1, 3, 5, 7, 9, 11 ]
+
+2.convert all the strings to title caps in a string array
+solution:
+function titleCase(str) {
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+  }
+  return str.join(' ');
+}
+console.log(titleCase("GEEKS FOR GEEKS"));
+output:
+Geeks For Geeks
+
+3.sum of all number in array
+solution:
+let arr = [1,2,3,4,5,6,7,8,9,10,11,12]
+
+let odds = arr.reduce(function foo(accumulator,element){
+    return accumulator+element;
+});
+console.log(odds)
+output:78
+
+4.prime numbers in array
+solution:
+function primeFactorsTo(max)
+{
+    var store  = [], i, j, primes = [];
+    for (i = 2; i <= max; ++i) 
+    {
+        if (!store [i]) 
+          {
+            primes.push(i);
+            for (j = i << 1; j <= max; j += i) 
+            {
+                store[j] = true;
+            }
+        }
+    }
+    return primes;
+}
+
+console.log(primeFactorsTo(9));
+
+console.log(primeFactorsTo(15));
+
+output:
+[ 2, 3, 5, 7 ]
+[ 2, 3, 5, 7, 11, 13 ]
+5.all palindromes in array
+
+solution:
+let palindromeArray = (arr) => {
+     let isPalindrome = true;
+     for(let i = 0; i < arr.length / 2; i++) {
+         if(arr[i] !== arr[arr.length - i - 1]){
+           isPalindrome = false; 
+           break;
+         }
+     }
+     
+     return isPalindrome;
+}
+Output:
+true
+false
+6.return median of two sorted arrays of same size
+solution:
+function getMedian(ar1, ar2, n)
+{
+    var i = 0; /* Current index of i/p array ar1[] */
+    var j = 0; /* Current index of i/p array ar2[] */
+    var count;
+    var m1 = -1, m2 = -1;
+ 
+    /* Since there are 2n elements, median will be average
+    of elements at index n-1 and n in the array obtained after
+    merging ar1 and ar2 */
+    for (count = 0; count <= n; count++)
+    {
+      
+        if (i == n)
+        {
+            m1 = m2;
+            m2 = ar2[0];
+            break;
+        }
+ 
+       
+        else if (j == n)
+        {
+            m1 = m2;
+            m2 = ar1[0];
+            break;
+        }
+      
+        if (ar1[i] <= ar2[j])
+        {
+            m1 = m2; /* Store the prev median */
+            m2 = ar1[i];
+            i++;
+        }
+        else
+        {
+            m1 = m2; /* Store the prev median */
+            m2 = ar2[j];
+            j++;
+        }
+    }
+ 
+    return (m1 + m2)/2;
+}
+ 
+var ar1 = [1, 12, 15, 26, 38];
+var ar2 = [2, 13, 17, 30, 45];
+var n1 = ar1.length;
+var n2 = ar2.length;
+if (n1 == n2)
+    console.log("Median is "+ getMedian(ar1, ar2, n1));
+else
+    console.log("Doesn't work for arrays of unequal size");
+output:
+median is 16
+
+7. remove duplicates from an array
+solution:
+var myArr = [1, 2, 2, 2, 3];
+var mySet = new Set(myArr);
+myArr = [...mySet];
+console.log(myArr);
+output:
+[1,2,3]
+
+8.Rotate an array k times and return the rotated array
+solution:
+function rotateArray(A, K) {
+    if (!A.length) return A;
+    let index = -1;
+    while (++index < K) {
+        A.unshift(A.pop());
+    }
+console.log(A);
+}
+
+[
+    rotateArray([3, 8, 9, 7, 6], 3),
+    rotateArray([0, 0, 0], 1),
+    rotateArray([1, 2, 3, 4], 4),
+    rotateArray([], 4),
+].join(' | ');
+
+
+
+
